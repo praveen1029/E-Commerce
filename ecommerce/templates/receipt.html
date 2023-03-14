@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+</style>
+<body>
+    {% block content %}
+    <content>
+        <h1>E-Commerce</h1>
+        <b>Hi {{cart_data.customer}},</b><br>
+        <b>This is a receipt email for your recent purchase.</b><br>
+        <table style='width:75%;'>
+            <tr>
+                <th style='border-bottom: 1px solid black;text-align:center;'><b>ITEM</b></th>
+                <th style='border-bottom: 1px solid black;text-align:center;'><b>QUANTITY</b></th>
+                <th style='border-bottom: 1px solid black;text-align:center;'><b>PRICE</b></th>
+            </tr>
+            {% for item in cart_data %}
+            <tr>
+                <td style='text-align:center;'>{{item.product}}</td>
+                <td style='text-align:center;'>{{item.count}}</td>
+                <td style='text-align:center;'>{{item.price}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <b>Total Cost = {{total_price}}</b>
+    </content>
+    {% endblock content %}
+</body>
+</html>
